@@ -155,7 +155,7 @@ const ContactForm = () => {
 
     console.log({ selectedCheckboxes });
     console.log(selectedCheckboxes.length);
-    if (selectedCheckboxes.length == 0) {
+    if (selectedCheckboxes.length === 0) {
       setIsDaysValid(false);
       newErrors.selectedDays = "Select atleast one";
       console.log("select atleast one");
