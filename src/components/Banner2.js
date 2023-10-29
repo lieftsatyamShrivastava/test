@@ -28,7 +28,7 @@ function Banner2() {
         {/* First Column */}
         <Col lg={5} xs={12} className="p-5 px-lg-2 align-items-center">
           <h1 style={{ color: "rgba(3,69,174,255)", fontWeight: "bold" }}>
-           One Stress Commute
+           Zero Stress Commute
           </h1>
           <h3 className="my-5" style={{ fontWeight: "500" }}>
             Weekly & Monthly Subscription based <span style={{ color: "green" }}>electric </span> rides for daily
