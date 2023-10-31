@@ -62,7 +62,7 @@ const EmailFormNew = () => {
 
       <Modal centered show={showModal} onHide={closeModal}>
         <Modal.Header closeButton>
-          {/* <Modal.Title>Form Submitted</Modal.Title> */}
+          {<Modal.Title>Form Submitted</Modal.Title>}
         </Modal.Header>
         <Modal.Body>
           <h5 className="p-4" style={{ color: "navy" }}>

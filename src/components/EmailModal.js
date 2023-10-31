@@ -319,7 +319,7 @@ import { Form, Button, Modal, Alert } from "react-bootstrap";
 // extra code ends
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, push } from "firebase/database"; // Import Realtime Database functions
+import { getDatabase, ref, push, set, get, child } from "firebase/database"; // Import Realtime Database functions
 import {app} from "../firebase";
 
 const EmailModal = () => {
@@ -345,33 +345,43 @@ const EmailModal = () => {
     setHasError(false); // Reset error when the user types
   };
 
-  const handleSubmit = (e) => {
+  const sanitizeEmail = (email) => {
+    return email.replace(/[^a-zA-Z0-9]/g, '_');
+  };
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (!email) {
       setHasError(true); // error
       return;
     }
-
+  
+    // Sanitize the email to create a valid path in the Realtime Database
+    const sanitizedEmail = sanitizeEmail(email);
+  
     // Add your logic for handling the form submission with the email
     console.log("Submitted email:", email);
-
-    // Send email to Firebase Firestore
-    const dbFirestore = getFirestore(app); // Get a Firestore reference
-    const emailCollection = collection(dbFirestore, "emails");
-    // addDoc(emailCollection, { email: email });
-    const newDoc = addDoc(emailCollection, { email: email });
-    console.log(newDoc.id);
-
+  
     // Send email to Firebase Realtime Database
-    const dbRealtime = getDatabase(app); // Get Realtime Database reference
-    const realtimeRef = ref(dbRealtime, "userDataEmail"); // Specify the path you want to use
-    
-    
-    push(realtimeRef, email);
-
-    // Close the modal after successful submission
-    handleClose();
+    const dbRealtime = getDatabase(app);
+    const realtimeRef = ref(dbRealtime, "userDataEmail");
+  
+    // Check if the email already exists in Realtime Database
+    const dataSnapshot = await get(child(realtimeRef, sanitizedEmail));
+  
+    if (dataSnapshot.exists()) {
+      // Email already exists in Realtime Database, handle the duplicate here
+      console.log("This email is already taken");
+      setHasError(true); // You can set an error state or display a message to the user
+    } else {
+      // If the email doesn't exist in Realtime Database, proceed to add it
+      set(child(realtimeRef, sanitizedEmail), true);
+      console.log("Realtime Database Entry added");
+  
+      // Close the modal after successful submission
+      handleClose();
+    }
   };
 
   const handleShow = () => setShow(true);
@@ -422,7 +432,7 @@ const EmailModal = () => {
             </div>
             {hasError && (
               <Alert variant="danger" className="mt-2">
-                Email is required.
+                This email is already taken
               </Alert>
             )}
           </Form>
