@@ -211,18 +211,60 @@ const Footer = () => {
                   >
                     <FontAwesomeIcon icon={faWhatsapp} /> {/* WhatsApp icon */}
                   </a>
-                </li>
-                <li>
-                  <a
-                    href="tel:+9188677122880"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ fontSize: "20px", color: "white" }}
+                  </li>
+                <Link
+                    to="number"
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: "500",
+                      color: "white",
+                      cursor: "pointer",
+                      padding: "10px",
+                      margin: "10px"
+                    }}
+                    onClick={() => scrollToSection("number")}
                   >
-                    <FontAwesomeIcon icon={faPhone} /> {/* Call icon */}
-                  </a>
-                </li>
+                    
+                  </Link>
+                  
               </ul>
+              
+              <ul>
+              
+              
+              <a
+  href="tel:+9188677122880"
+  target="blank"
+  rel="noopener noreferrer"
+  style={{
+    fontSize: "20px",
+    padding: "30px",
+    color: "white",
+    textDecoration: "none", // Add this line to remove the underline
+  }}
+>
+  <FontAwesomeIcon icon={faPhone} /> {/* Call icon */}
+</a>
+
+                
+              
+                  
+                  <Link
+                    to="features"
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: "500",
+                      color: "white",
+                      cursor: "pointer",
+                      padding: "1px",
+                    }}
+                    onClick={() => scrollToSection("features")}
+                  >
+                        +91 8867712288 
+                    
+                  </Link>
+                  
+                </ul>
             </Col>
           </Row>
         </main>
