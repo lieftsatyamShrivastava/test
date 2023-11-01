@@ -89,6 +89,19 @@ const Footer = () => {
                   >
                     Our Services
                   </Link>
+                  <Link
+                    to="number"
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: "500",
+                      color: "white",
+                      cursor: "pointer",
+                      padding: "10px",
+                    }}
+                    onClick={() => scrollToSection("number")}
+                  >
+                    8867712288
+                  </Link>
                 </li>
               </ul>
             </Col>
