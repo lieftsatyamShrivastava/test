@@ -1,4 +1,5 @@
 import { Button, Form, Modal } from "react-bootstrap";
+import React, { useState } from "react";
 
 // new code starts
 import { collection, addDoc, getFirestore } from "firebase/firestore";
