@@ -11,7 +11,7 @@ function FAQ() {
      id: 1,
      ques: "How and when do I make the payment?",
 
-     ans: "After your slot is booked and confirmed by our team, you will be able to take the first free ride.Rider details will be messaged 12 hrs before your ride on your phone number. Once your first free ride is done, your will have to make the payment for your all the rides scheduled for the week or month.Next ride will be scheduled only after the advance payment.",
+     ans: "After your slot is booked and confirmed by our team,you will be able to take the first free ride.Rider details will be messaged 12 hrs before your ride on your phone number. Once your first free ride is done, your will have to make the payment for your all the rides scheduled for the week or month. Next ride will be scheduled only after the advance payment.",
    },
    {
      id: 2,
